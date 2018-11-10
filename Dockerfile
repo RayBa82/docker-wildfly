@@ -22,6 +22,13 @@ RUN chown -R jboss:jboss /opt/wildfly/
 
 RUN apt-get remove -y git wget --autoremove --purge
 
+RUN apt update \
+    && apt -y install \
+    locales && \
+    locale-gen C.UTF-8 && \
+    /usr/sbin/update-locale LANG=C.UTF-8 && \
+    apt-get remove -y locales
+
 RUN chown -R jboss:jboss /opt/health/
 
 USER jboss
