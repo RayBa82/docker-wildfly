@@ -22,12 +22,16 @@ RUN chown -R jboss:jboss /opt/wildfly/
 
 RUN apt-get remove -y git wget --autoremove --purge
 
+ENV LANG C.UTF-8
+
 RUN apt update \
     && apt -y install \
-    locales && \
-    locale-gen C.UTF-8 && \
-    /usr/sbin/update-locale LANG=C.UTF-8 && \
-    apt-get remove -y locales
+    locales 
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8 
 
 RUN chown -R jboss:jboss /opt/health/
 
