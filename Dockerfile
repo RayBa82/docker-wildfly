@@ -13,7 +13,7 @@ RUN apt update \
     && apt -y install \
     wget	
 
-RUN wget -O wildfly.tar.gz http://download.jboss.org/wildfly/14.0.1.Final/wildfly-14.0.1.Final.tar.gz
+RUN wget -O wildfly.tar.gz https://download.jboss.org/wildfly/15.0.0.Final/wildfly-15.0.0.Final.tar.gz
 RUN tar -xzf wildfly.tar.gz -C /opt/wildfly --strip-components 1
 RUN rm wildfly.tar.gz
 

@@ -4,4 +4,4 @@ services:
 
   java:
     build: .
-    image: rayba82/wildfly:14
+    image: rayba82/wildfly:15
